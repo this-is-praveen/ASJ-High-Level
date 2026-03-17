@@ -12,22 +12,25 @@
   <meta name="author" content="Praveenmuthukumar Gnanaraj" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0d1117" />
+  <link rel="canonical" href="https://this-is-praveen.github.io/ASJ-High-Level/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="ASJ Overview — Agile, Scrum & Jira" />
   <meta property="og:description"
     content="A practical, visual overview of Agile, Scrum, and Jira for engineering teams." />
   <meta property="og:site_name" content="ASJ Overview" />
+  <meta property="og:url" content="https://this-is-praveen.github.io/ASJ-High-Level/" />
+  <meta property="og:image" content="https://this-is-praveen.github.io/ASJ-High-Level/favicon.svg" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="ASJ Overview — Agile, Scrum & Jira" />
   <meta name="twitter:description"
     content="A practical, visual overview of Agile, Scrum, and Jira for engineering teams." />
+  <meta name="twitter:image" content="https://this-is-praveen.github.io/ASJ-High-Level/favicon.svg" />
 
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d1117'/%3E%3Crect x='4' y='4' width='56' height='56' rx='10' fill='none' stroke='%2358a6ff' stroke-width='2'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='22' font-family='Arial,sans-serif' font-weight='700' fill='%233fb950'%3EASJ%3C/text%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%230d1117'/%3E%3Crect x='12' y='12' width='156' height='156' rx='30' fill='none' stroke='%2358a6ff' stroke-width='8'/%3E%3Ctext x='90' y='108' text-anchor='middle' font-size='64' font-family='Arial,sans-serif' font-weight='700' fill='%233fb950'%3EASJ%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="shortcut icon" href="./favicon.svg" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.svg" />
 
   <!-- Google Fonts -->
   <link
@@ -904,6 +907,12 @@
         overflow-x: hidden;
       }
 
+      .slide>div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
       .max-720,
       .max-960,
       .max-1100 {
@@ -934,20 +943,24 @@
 
     @media (max-width: 800px) {
       #nav {
-        width: calc(100vw - 20px);
-        left: 10px;
+        width: calc(100vw - 16px);
+        left: 8px;
         transform: none;
         justify-content: center;
-        gap: 8px;
-        padding: 8px 10px;
+        gap: 6px;
+        padding: 6px 8px;
+        bottom: calc(8px + env(safe-area-inset-bottom));
+        border-radius: 16px;
       }
 
-      #dot-nav {
-        gap: 4px;
+      #dot-nav,
+      #btn-first,
+      #btn-last {
+        display: none;
       }
 
       #slide-counter {
-        min-width: 44px;
+        min-width: 52px;
         font-size: 12px;
       }
 
@@ -974,6 +987,7 @@
       .board,
       .principles-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .manifesto-vs {
@@ -1006,19 +1020,33 @@
       .flow-arrow {
         justify-content: center;
         transform: rotate(90deg);
-        margin: 6px 0;
+        margin: 2px 0;
+      }
+
+      .tc-arrow {
+        transform: rotate(90deg);
+        margin: 2px 0;
+      }
+
+      .nav-btn {
+        width: 30px;
+        height: 30px;
+      }
+
+      .nav-btn .material-icons {
+        font-size: 18px;
       }
     }
 
     @media (max-width: 560px) {
       .slide {
-        padding: 20px 14px 98px;
+        padding: 18px 12px 84px;
       }
 
       .card,
       .tc-box,
       .flow-step {
-        padding: 14px;
+        padding: 12px;
       }
 
       p,
@@ -1027,13 +1055,14 @@
         line-height: 1.6;
       }
 
-      .nav-btn {
-        width: 32px;
-        height: 32px;
-      }
-
       .jf-item {
         width: 100%;
+      }
+
+      #slide-label {
+        font-size: 10px;
+        top: 10px;
+        right: 10px;
       }
     }
   </style>
@@ -1044,6 +1073,7 @@
       "@type": "LearningResource",
       "name": "ASJ Overview — Agile, Scrum & Jira",
       "description": "A practical slide deck introducing Agile, Scrum, and Jira for developers and testers.",
+      "url": "https://this-is-praveen.github.io/ASJ-High-Level/",
       "author": {
         "@type": "Person",
         "name": "Praveenmuthukumar Gnanaraj"
