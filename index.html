@@ -54,36 +54,18 @@
       align-items: center;
       padding: 48px 80px;
       opacity: 0;
-      transform: translateX(80px) scale(.985);
-      filter: blur(3px);
-      transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1), filter .55s cubic-bezier(.22,.61,.36,1);
+      transform: translateX(60px);
+      transition: opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
       pointer-events: none;
     }
     .slide.active {
       opacity: 1;
-      transform: translateX(0) scale(1);
-      filter: blur(0);
+      transform: translateX(0);
       pointer-events: all;
     }
-    .slide.slide-out-left {
+    .slide.exit-left {
       opacity: 0;
-      transform: translateX(-95px) scale(.98);
-      filter: blur(2px);
-    }
-    .slide.slide-out-right {
-      opacity: 0;
-      transform: translateX(95px) scale(.98);
-      filter: blur(2px);
-    }
-    .slide.active.slide-in-right {
-      opacity: 0;
-      transform: translateX(95px) scale(.985);
-      filter: blur(3px);
-    }
-    .slide.active.slide-in-left {
-      opacity: 0;
-      transform: translateX(-95px) scale(.985);
-      filter: blur(3px);
+      transform: translateX(-60px);
     }
 
     /* ─── Nav ──────────────────────────────────────────────── */
@@ -122,25 +104,6 @@
       min-width: 52px;
       text-align: center;
     }
-    #dot-nav {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 4px;
-      margin-right: 4px;
-    }
-    .dot-btn {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: none;
-      background: var(--text-muted);
-      opacity: .45;
-      cursor: pointer;
-      transition: transform .2s ease, opacity .2s ease, background .2s ease;
-    }
-    .dot-btn:hover { opacity: .75; transform: scale(1.15); }
-    .dot-btn.active { background: var(--accent); opacity: 1; transform: scale(1.2); }
 
     /* ─── Progress bar ─────────────────────────────────────── */
     #progress-bar {
@@ -538,7 +501,6 @@
     <p class="subtitle" style="margin-top:16px">A practical overview for developers &amp; testers —<br/>from mindset to workflow to tooling.</p>
     <div class="divider" style="background:linear-gradient(90deg,var(--accent),var(--accent3));margin-top:32px;width:80px;"></div>
     <p style="margin-top:24px;font-size:.82rem;color:var(--text-muted)">ASJ Overview &nbsp;·&nbsp; 45-min session</p>
-    <p style="margin-top:8px;font-size:.8rem;color:var(--text-dim)">Author: Praveenmuthukumar Gnanaraj</p>
   </div>
 </div>
 
@@ -574,97 +536,58 @@
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 3 — Agile Manifesto + Principles                    -->
+<!-- SLIDE 3 — Agile Manifesto 4 Values                       -->
 <!-- ══════════════════════════════════════════════════════════ -->
 <div class="slide" id="s3">
-  <div class="max-1100">
+  <div class="max-960">
     <div class="tag tag-blue">Agile Manifesto</div>
-    <h2>Manifesto + Principles (One View)</h2>
-    <div class="grid-2" style="gap:20px;align-items:start">
-      <div class="card" style="width:100%">
-        <h3 style="margin-bottom:14px;color:var(--accent)">4 Core Values</h3>
-        <div class="manifesto-vs">
-          <span class="mv-left accent-blue">Individuals &amp; Interactions</span>
-          <span class="mv-over">over</span>
-          <span class="mv-right">Processes &amp; Tools</span>
-        </div>
-        <div class="manifesto-vs">
-          <span class="mv-left accent-green">Working Software</span>
-          <span class="mv-over">over</span>
-          <span class="mv-right">Comprehensive Documentation</span>
-        </div>
-        <div class="manifesto-vs">
-          <span class="mv-left accent-purple">Customer Collaboration</span>
-          <span class="mv-over">over</span>
-          <span class="mv-right">Contract Negotiation</span>
-        </div>
-        <div class="manifesto-vs">
-          <span class="mv-left accent-orange">Responding to Change</span>
-          <span class="mv-over">over</span>
-          <span class="mv-right">Following a Plan</span>
-        </div>
+    <h2>The 4 Core Values</h2>
+    <p style="margin-bottom:28px;max-width:600px">We value the items on the <span class="accent-blue">left</span> more — but the right still has value.</p>
+    <div class="card" style="max-width:700px;width:100%">
+      <div class="manifesto-vs">
+        <span class="mv-left accent-blue">Individuals &amp; Interactions</span>
+        <span class="mv-over">over</span>
+        <span class="mv-right">Processes &amp; Tools</span>
       </div>
-      <div class="card" style="width:100%">
-        <h3 style="margin-bottom:14px;color:var(--accent2)">12 Principles, Clustered</h3>
-        <div class="grid-2" style="gap:10px">
-          <div class="card" style="padding:12px 14px;background:var(--surface2)">
-            <div style="font-size:.8rem;font-weight:600;color:var(--accent2);margin-bottom:4px">Customer Value</div>
-            <p style="font-size:.76rem">Early delivery, continuous value, welcome change.</p>
-          </div>
-          <div class="card" style="padding:12px 14px;background:var(--surface2)">
-            <div style="font-size:.8rem;font-weight:600;color:var(--accent)">Flow &amp; Delivery</div>
-            <p style="font-size:.76rem">Frequent releases, sustainable pace, working software first.</p>
-          </div>
-          <div class="card" style="padding:12px 14px;background:var(--surface2)">
-            <div style="font-size:.8rem;font-weight:600;color:var(--accent3)">Team Collaboration</div>
-            <p style="font-size:.76rem">Business + devs daily, motivated teams, direct communication.</p>
-          </div>
-          <div class="card" style="padding:12px 14px;background:var(--surface2)">
-            <div style="font-size:.8rem;font-weight:600;color:var(--accent4)">Engineering Excellence</div>
-            <p style="font-size:.76rem">Good design, simplicity, self-organization, continuous improvement.</p>
-          </div>
-        </div>
+      <div class="manifesto-vs">
+        <span class="mv-left accent-green">Working Software</span>
+        <span class="mv-over">over</span>
+        <span class="mv-right">Comprehensive Documentation</span>
+      </div>
+      <div class="manifesto-vs">
+        <span class="mv-left accent-purple">Customer Collaboration</span>
+        <span class="mv-over">over</span>
+        <span class="mv-right">Contract Negotiation</span>
+      </div>
+      <div class="manifesto-vs">
+        <span class="mv-left accent-orange">Responding to Change</span>
+        <span class="mv-over">over</span>
+        <span class="mv-right">Following a Plan</span>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
-<!-- SLIDE 4 — Agile Visual Map                                 -->
+<!-- SLIDE 4 — 12 Principles                                   -->
 <!-- ══════════════════════════════════════════════════════════ -->
 <div class="slide" id="s4">
   <div class="max-1100" style="width:100%">
-    <div class="tag tag-blue">Visualization</div>
-    <h2>Agile At a Glance</h2>
-    <p style="margin-bottom:24px;text-align:center">One-page visual for interview explanation.</p>
-    <div class="card" style="padding:24px">
-      <div class="flow" style="margin-bottom:22px">
-        <div class="flow-step"><div class="step-icon">🎯</div><div class="step-label">Customer Need</div></div>
-        <div class="flow-arrow material-icons">arrow_forward</div>
-        <div class="flow-step"><div class="step-icon">🧾</div><div class="step-label">Prioritized Backlog</div></div>
-        <div class="flow-arrow material-icons">arrow_forward</div>
-        <div class="flow-step"><div class="step-icon">🛠️</div><div class="step-label">Build in Sprint</div></div>
-        <div class="flow-arrow material-icons">arrow_forward</div>
-        <div class="flow-step"><div class="step-icon">🧪</div><div class="step-label">Test + Validate</div></div>
-        <div class="flow-arrow material-icons">arrow_forward</div>
-        <div class="flow-step"><div class="step-icon">🚀</div><div class="step-label">Release Increment</div></div>
-        <div class="flow-arrow material-icons">arrow_forward</div>
-        <div class="flow-step"><div class="step-icon">🔁</div><div class="step-label">Feedback Loop</div></div>
-      </div>
-      <div class="grid-3" style="gap:12px">
-        <div class="card" style="background:var(--surface2);padding:12px 14px">
-          <h3 style="font-size:.86rem;color:var(--accent);margin-bottom:4px">Value Focus</h3>
-          <p style="font-size:.76rem">Ship what users need most, first.</p>
-        </div>
-        <div class="card" style="background:var(--surface2);padding:12px 14px">
-          <h3 style="font-size:.86rem;color:var(--accent2);margin-bottom:4px">Fast Feedback</h3>
-          <p style="font-size:.76rem">Inspect every sprint, adapt quickly.</p>
-        </div>
-        <div class="card" style="background:var(--surface2);padding:12px 14px">
-          <h3 style="font-size:.86rem;color:var(--accent3);margin-bottom:4px">Quality Built-In</h3>
-          <p style="font-size:.76rem">Continuous testing, Definition of Done.</p>
-        </div>
-      </div>
+    <div class="tag tag-blue">Agile Manifesto</div>
+    <h2>12 Guiding Principles</h2>
+    <div class="principles-grid">
+      <div class="principle-card"><div class="pnum">P01</div>Satisfy the customer through early &amp; continuous delivery of valuable software.</div>
+      <div class="principle-card"><div class="pnum">P02</div>Welcome changing requirements, even late in development.</div>
+      <div class="principle-card"><div class="pnum">P03</div>Deliver working software frequently — weeks, not months.</div>
+      <div class="principle-card"><div class="pnum">P04</div>Business people and developers must work together daily.</div>
+      <div class="principle-card"><div class="pnum">P05</div>Build projects around motivated individuals. Trust them.</div>
+      <div class="principle-card"><div class="pnum">P06</div>Face-to-face conversation is the most efficient channel.</div>
+      <div class="principle-card"><div class="pnum">P07</div>Working software is the primary measure of progress.</div>
+      <div class="principle-card"><div class="pnum">P08</div>Agile promotes sustainable development — indefinitely.</div>
+      <div class="principle-card"><div class="pnum">P09</div>Continuous attention to technical excellence and good design.</div>
+      <div class="principle-card"><div class="pnum">P10</div>Simplicity — maximise work <em>not</em> done — is essential.</div>
+      <div class="principle-card"><div class="pnum">P11</div>Best architectures emerge from self-organising teams.</div>
+      <div class="principle-card"><div class="pnum">P12</div>Teams regularly reflect and adjust their behaviour.</div>
     </div>
   </div>
 </div>
@@ -1244,8 +1167,7 @@
     </div>
 
     <p style="margin-top:28px;font-size:.8rem;color:var(--text-muted)">
-      Thank you for attending &nbsp;·&nbsp; ASJ Overview<br/>
-      <span style="font-size:.75rem">Praveenmuthukumar Gnanaraj</span>
+      Thank you for attending &nbsp;·&nbsp; ASJ Overview
     </p>
   </div>
 </div>
@@ -1254,19 +1176,12 @@
 
 <!-- ─── Navigation ──────────────────────────────────────────── -->
 <div id="nav">
-  <button class="nav-btn" id="btn-first" title="First slide">
-    <span class="material-icons">first_page</span>
-  </button>
   <button class="nav-btn" id="btn-prev" disabled title="Previous (←)">
     <span class="material-icons">chevron_left</span>
   </button>
   <span id="slide-counter">1 / 15</span>
-  <div id="dot-nav" aria-label="Slide navigation"></div>
   <button class="nav-btn" id="btn-next" title="Next (→)">
     <span class="material-icons">chevron_right</span>
-  </button>
-  <button class="nav-btn" id="btn-last" title="Last slide">
-    <span class="material-icons">last_page</span>
   </button>
   <button class="nav-btn" id="fs-btn" title="Fullscreen (F)" style="margin-left:4px">
     <span class="material-icons" id="fs-icon">fullscreen</span>
@@ -1281,29 +1196,15 @@
   const progressBar  = document.getElementById('progress-bar');
   const slideLabel   = document.getElementById('slide-label');
   const counter      = document.getElementById('slide-counter');
-  const dotNav       = document.getElementById('dot-nav');
-  const btnFirst     = document.getElementById('btn-first');
   const btnPrev      = document.getElementById('btn-prev');
   const btnNext      = document.getElementById('btn-next');
-  const btnLast      = document.getElementById('btn-last');
   const fsBtn        = document.getElementById('fs-btn');
   const fsIcon       = document.getElementById('fs-icon');
-
-  const dots = [];
-  for (let i = 1; i <= TOTAL; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'dot-btn';
-    dot.type = 'button';
-    dot.title = 'Go to slide ' + i;
-    dot.addEventListener('click', () => goTo(i));
-    dotNav.appendChild(dot);
-    dots.push(dot);
-  }
 
   function getSlide(n) { return document.getElementById('s' + n); }
 
   function goTo(n) {
-    if (n < 1 || n > TOTAL || n === current) return;
+    if (n < 1 || n > TOTAL) return;
 
     const prev = getSlide(current);
     const next = getSlide(n);
@@ -1311,23 +1212,38 @@
     // Direction
     const forward = n > current;
 
-    prev.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
-    next.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
-
     // Exit current
     prev.classList.remove('active');
-    prev.classList.add(forward ? 'slide-out-left' : 'slide-out-right');
+    prev.classList.add(forward ? 'exit-left' : '');
+    if (!forward) {
+      prev.style.transform = 'translateX(60px)';
+      prev.style.opacity   = '0';
+    }
 
-    next.classList.add('active');
-    next.classList.add(forward ? 'slide-in-right' : 'slide-in-left');
-    requestAnimationFrame(() => {
-      next.classList.remove('slide-in-right', 'slide-in-left');
-    });
-
-    // Cleanup
+    // Reset any inline styles on previous after transition
     setTimeout(() => {
-      prev.classList.remove('slide-out-left', 'slide-out-right');
-    }, 580);
+      prev.classList.remove('exit-left');
+      prev.style.transform = '';
+      prev.style.opacity   = '';
+    }, 460);
+
+    // Enter next
+    if (!forward) {
+      next.style.transform = 'translateX(-60px)';
+      next.style.opacity   = '0';
+    } else {
+      next.style.transform = 'translateX(60px)';
+      next.style.opacity   = '0';
+    }
+    next.classList.add('active');
+
+    // Force reflow then animate in
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        next.style.transform = 'translateX(0)';
+        next.style.opacity   = '1';
+      });
+    });
 
     current = n;
     updateUI();
@@ -1336,21 +1252,14 @@
   function updateUI() {
     counter.textContent     = current + ' / ' + TOTAL;
     slideLabel.textContent  = current + ' / ' + TOTAL;
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx + 1 === current);
-    });
-    btnFirst.disabled       = current === 1;
     btnPrev.disabled        = current === 1;
     btnNext.disabled        = current === TOTAL;
-    btnLast.disabled        = current === TOTAL;
     const pct = ((current - 1) / (TOTAL - 1)) * 100;
     progressBar.style.width = pct + '%';
   }
 
-  btnFirst.addEventListener('click', () => goTo(1));
   btnPrev.addEventListener('click', () => goTo(current - 1));
   btnNext.addEventListener('click', () => goTo(current + 1));
-  btnLast.addEventListener('click', () => goTo(TOTAL));
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
