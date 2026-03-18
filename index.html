@@ -56,6 +56,7 @@
       --bg: #0d1117;
       --surface: #161b22;
       --surface2: #21262d;
+      --surface3: #1a2028;
       --border: #30363d;
       --accent: #58a6ff;
       --accent2: #3fb950;
@@ -66,6 +67,17 @@
       --text-dim: #8b949e;
       --text-muted: #484f58;
       --radius: 12px;
+      --radius-sm: 10px;
+      --radius-lg: 14px;
+      --space-1: 6px;
+      --space-2: 10px;
+      --space-3: 14px;
+      --space-4: 18px;
+      --space-5: 24px;
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, .22);
+      --card-pad: 18px;
+      --micro-text: .78rem;
+      --body-text: .86rem;
     }
 
     html,
@@ -75,6 +87,9 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow: hidden;
     }
 
@@ -240,7 +255,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 48px 80px;
+      padding: 44px 72px;
       opacity: 0;
       transform: translateX(80px) scale(.985);
       filter: blur(3px);
@@ -387,11 +402,11 @@
       display: inline-block;
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: .1em;
+      letter-spacing: .09em;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 50px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .tag-blue {
@@ -428,25 +443,28 @@
       font-size: clamp(2rem, 4.5vw, 3.6rem);
       font-weight: 700;
       line-height: 1.15;
+      letter-spacing: -.015em;
     }
 
     h2 {
       font-size: clamp(1.4rem, 3vw, 2.4rem);
       font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 28px;
+      line-height: 1.22;
+      letter-spacing: -.01em;
+      margin-bottom: 20px;
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
+      line-height: 1.35;
       margin-bottom: 8px;
     }
 
     p,
     li {
-      font-size: clamp(.85rem, 1.4vw, 1rem);
-      line-height: 1.7;
+      font-size: clamp(.85rem, 1.3vw, .96rem);
+      line-height: 1.62;
       color: var(--text-dim);
     }
 
@@ -523,11 +541,16 @@
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 22px;
+      border-radius: var(--radius-lg);
+      padding: var(--card-pad);
+      box-shadow: var(--shadow-soft);
     }
 
     .card-accent-top {
+      border-top: 3px solid var(--accent);
+    }
+
+    .card-accent-blue {
       border-top: 3px solid var(--accent);
     }
 
@@ -549,14 +572,15 @@
 
     /* ─── Icon circles ─────────────────────────────────────── */
     .icon-circle {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      margin-bottom: 12px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
     }
 
     .ic-blue {
@@ -595,8 +619,9 @@
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 50px;
-      padding: 6px 14px;
-      font-size: .82rem;
+      padding: 6px 12px;
+      font-size: var(--micro-text);
+      line-height: 1.3;
       color: var(--text-dim);
     }
 
@@ -613,8 +638,8 @@
     .flow-step {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
       text-align: center;
       min-width: 110px;
     }
@@ -625,7 +650,7 @@
     }
 
     .flow-step .step-label {
-      font-size: .8rem;
+      font-size: var(--micro-text);
       color: var(--text-dim);
     }
 
@@ -685,7 +710,7 @@
     .board-col {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       padding: 14px;
     }
 
@@ -700,12 +725,12 @@
     }
 
     .board-card {
-      background: var(--surface2);
+      background: var(--surface3);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 10px 12px;
       margin-bottom: 8px;
-      font-size: .78rem;
+      font-size: var(--micro-text);
       color: var(--text-dim);
     }
 
@@ -747,7 +772,7 @@
     }
 
     .lc-label {
-      font-size: .75rem;
+      font-size: var(--micro-text);
       color: var(--text-dim);
       max-width: 72px;
     }
@@ -832,7 +857,7 @@
     }
 
     .mv-over {
-      font-size: .75rem;
+      font-size: var(--micro-text);
       color: var(--text-muted);
       white-space: nowrap;
       padding: 4px 10px;
@@ -889,7 +914,7 @@
 
     .jf-label {
       min-width: 110px;
-      font-size: .78rem;
+      font-size: var(--micro-text);
       font-weight: 600;
       color: var(--text-dim);
       display: flex;
@@ -906,11 +931,11 @@
     }
 
     .jf-item {
-      background: var(--surface2);
+      background: var(--surface3);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 8px 14px;
-      font-size: .78rem;
+      font-size: var(--micro-text);
       color: var(--text-dim);
       display: flex;
       align-items: center;
@@ -935,8 +960,8 @@
     .tc-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
       text-align: center;
       min-width: 150px;
       position: relative;
@@ -1027,9 +1052,9 @@
       gap: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 11px 16px;
-      font-size: .88rem;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: var(--body-text);
     }
 
     .dod-check {
@@ -1040,6 +1065,57 @@
     /* ─── Methodology pills ────────────────────────────────── */
     .method-card {
       text-align: center;
+    }
+
+    /* ─── Consistency normalization layer ─────────────────── */
+    .slide>div {
+      width: 100%;
+    }
+
+    .slide .card,
+    .slide .flow-step,
+    .slide .jf-item,
+    .slide .board-card,
+    .slide .tc-box,
+    .slide .dod-item {
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .slide .card p,
+    .slide .jf-item,
+    .slide .board-card,
+    .slide .lc-label,
+    .slide .mv-over,
+    .slide .pill {
+      letter-spacing: .002em;
+    }
+
+    /* Normalize mixed-source inline micro typography and box radii */
+    .slide [style*="font-size:.72rem"],
+    .slide [style*="font-size:.75rem"],
+    .slide [style*="font-size:.76rem"],
+    .slide [style*="font-size:.78rem"] {
+      font-size: var(--micro-text) !important;
+      line-height: 1.5 !important;
+    }
+
+    .slide [style*="font-size:.82rem"],
+    .slide [style*="font-size:.85rem"],
+    .slide [style*="font-size:.88rem"],
+    .slide [style*="font-size:.9rem"] {
+      font-size: var(--body-text) !important;
+      line-height: 1.55 !important;
+    }
+
+    .slide [style*="border-radius:8px"],
+    .slide [style*="border-radius:10px"] {
+      border-radius: var(--radius-sm) !important;
+    }
+
+    .slide [style*="padding:12px 14px"],
+    .slide [style*="padding:14px 16px"],
+    .slide [style*="padding:14px"] {
+      padding: 12px 14px !important;
     }
 
     .method-card .m-icon {
@@ -1191,6 +1267,10 @@
     @media (max-width: 560px) {
       .slide {
         padding: 18px 12px 84px;
+      }
+
+      .card {
+        padding: 14px;
       }
 
       .card,
