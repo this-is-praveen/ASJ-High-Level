@@ -2561,8 +2561,9 @@
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     
-    // Read saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme-preference') || 'dark';
+    // Read saved preference; otherwise fall back to browser/system color scheme
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme-preference') || (prefersDark ? 'dark' : 'light');
     if (savedTheme === 'light') {
       html.classList.add('light-mode');
       updateThemeIcon();
