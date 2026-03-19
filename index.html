@@ -131,6 +131,9 @@
       --shadow-glow: 0 0 20px rgba(0, 136, 221, .1);
       --nav-bg: rgba(255, 255, 255, .95);
       --nav-border: rgba(213, 220, 229, .8);
+      --ambient-tint: radial-gradient(circle at 16% 12%, rgba(0, 136, 221, .07) 0%, rgba(0, 136, 221, 0) 32%),
+        radial-gradient(circle at 86% 18%, rgba(124, 58, 237, .065) 0%, rgba(124, 58, 237, 0) 34%),
+        radial-gradient(circle at 54% 88%, rgba(0, 168, 85, .06) 0%, rgba(0, 168, 85, 0) 38%);
     }
 
     html,
@@ -145,6 +148,10 @@
       text-rendering: optimizeLegibility;
       overflow: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    html.light-mode body {
+      background: var(--ambient-tint), var(--bg);
     }
 
     /* ─── Ambient Motion Layer ─────────────────────────────── */
@@ -1201,10 +1208,15 @@
     .slide .jf-item,
     .slide .board-card,
     .slide .tc-box,
-      .slide .dod-item,
-      #nav,
-      #theme-toggle {
-        transition: border-color .2s ease, background .2s ease, color .2s ease;
+    .slide .dod-item,
+    #nav,
+    #theme-toggle {
+      transition: border-color .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .slide .card p,
+    .slide .jf-item,
+    .slide .board-card,
     .slide .lc-label,
     .slide .mv-over,
     .slide .pill {
@@ -1433,23 +1445,33 @@
       }
     }
 
-    /* Light mode optimizations */
-    /* Light mode gradient adjustments */
+    /* Light mode ambient adjustments */
+    html.light-mode .ambient-bg {
+      opacity: 1;
+    }
+
+    html.light-mode .orb {
+      mix-blend-mode: multiply;
+      opacity: 1;
+      filter: blur(24px) saturate(1);
+    }
+
     html.light-mode .orb-1 {
-      background: radial-gradient(circle, rgba(0, 136, 221, .18) 0%, rgba(0, 136, 221, 0) 68%);
+      background: radial-gradient(circle, rgba(15, 23, 42, .22) 0%, rgba(15, 23, 42, 0) 68%);
     }
 
     html.light-mode .orb-2 {
-      background: radial-gradient(circle, rgba(124, 58, 237, .15) 0%, rgba(124, 58, 237, 0) 68%);
+      background: radial-gradient(circle, rgba(30, 41, 59, .2) 0%, rgba(30, 41, 59, 0) 68%);
     }
 
     html.light-mode .orb-3 {
-      background: radial-gradient(circle, rgba(0, 168, 85, .14) 0%, rgba(0, 168, 85, 0) 70%);
+      background: radial-gradient(circle, rgba(51, 65, 85, .18) 0%, rgba(51, 65, 85, 0) 70%);
     }
 
-    html.light-mode .spark {
-      background: rgba(15, 23, 42, .28);
-      box-shadow: 0 0 10px rgba(15, 23, 42, .12);
+    html.light-mode .ambient-bg .spark {
+      background: rgba(15, 23, 42, 1);
+      box-shadow: 0 0 10px rgba(15, 23, 42, .25);
+      opacity: 1;
     }
 
     @media (prefers-reduced-motion: reduce) {
