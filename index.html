@@ -52,20 +52,39 @@
       padding: 0;
     }
 
+     /* ═══════════════════════════════════════════════════════════════
+       CUSTOM AGILE/SCRUM/JIRA THEME
+       ═══════════════════════════════════════════════════════════════ */
+    
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #21262d;
-      --surface3: #1a2028;
-      --border: #30363d;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --accent3: #d2a8ff;
-      --accent4: #ffa657;
-      --accent5: #ff7b72;
-      --text: #e6edf3;
-      --text-dim: #8b949e;
-      --text-muted: #484f58;
+      color-scheme: light dark;
+      
+      /* ──── DARK MODE: Premium Agile Theme (Default) ──── */
+      --bg: #0f1419;
+      --bg-alt: #13171f;
+      --surface: #1a2332;
+      --surface2: #232d3d;
+      --surface3: #1f2937;
+      --border: #3a4a62;
+      --border-light: #4a5a72;
+      
+      /* Premium Agile-Specific Accents */
+      --accent: #00d4ff;        /* Cyan - Agile Motion */
+      --accent2: #00ff88;       /* Electric Green - Scrum Energy */
+      --accent3: #a77dff;       /* Vibrant Purple - Planning */
+      --accent4: #ffb84d;       /* Golden Orange - Jira Workflow */
+      --accent5: #ff4757;       /* Alert Red - Critical Issues */
+      
+      --text: #f0f4f8;
+      --text-dim: #b0bcc8;
+      --text-muted: #7a8a9e;
+      --text-disabled: #5a6a7e;
+      
+      /* Gradients for visual impact */
+      --grad-primary: linear-gradient(135deg, #00d4ff 0%, #a77dff 100%);
+      --grad-success: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+      --grad-accent: linear-gradient(135deg, #ffb84d 0%, #ff4757 100%);
+      
       --radius: 12px;
       --radius-sm: 10px;
       --radius-lg: 14px;
@@ -74,10 +93,44 @@
       --space-3: 14px;
       --space-4: 18px;
       --space-5: 24px;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, .22);
+      --shadow-soft: 0 12px 32px rgba(0, 0, 0, .45);
+      --shadow-glow: 0 0 20px rgba(0, 212, 255, .15);
       --card-pad: 18px;
       --micro-text: .78rem;
       --body-text: .86rem;
+      --nav-bg: rgba(26, 35, 50, .92);
+      --nav-border: rgba(58, 74, 98, .6);
+    }
+    
+    /* ──── LIGHT MODE: Crisp & Professional ──── */
+    html.light-mode {
+      --bg: #f5f7fa;
+      --bg-alt: #f0f3f8;
+      --surface: #ffffff;
+      --surface2: #f0f4f9;
+      --surface3: #e9ecf2;
+      --border: #d5dce5;
+      --border-light: #e5ecf5;
+      
+      --accent: #0088dd;        /* Deep Agile Blue */
+      --accent2: #00a855;       /* Deep Scrum Green */
+      --accent3: #7c3aed;       /* Deep Purple */
+      --accent4: #d97706;       /* Deep Orange */
+      --accent5: #dc2626;       /* Deep Red */
+      
+      --text: #0f172a;
+      --text-dim: #475569;
+      --text-muted: #64748b;
+      --text-disabled: #94a3b8;
+      
+      --grad-primary: linear-gradient(135deg, #0088dd 0%, #7c3aed 100%);
+      --grad-success: linear-gradient(135deg, #00a855 0%, #0088dd 100%);
+      --grad-accent: linear-gradient(135deg, #d97706 0%, #dc2626 100%);
+      
+      --shadow-soft: 0 12px 32px rgba(0, 0, 0, .08);
+      --shadow-glow: 0 0 20px rgba(0, 136, 221, .1);
+      --nav-bg: rgba(255, 255, 255, .95);
+      --nav-border: rgba(213, 220, 229, .8);
     }
 
     html,
@@ -91,6 +144,7 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ─── Ambient Motion Layer ─────────────────────────────── */
@@ -106,8 +160,15 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(22px);
-      opacity: .2;
+      opacity: .25;
       mix-blend-mode: screen;
+      animation: driftSmooth 1000s linear infinite;
+    }
+    
+    @keyframes driftSmooth {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(120px, 100px) scale(1.15); }
+      100% { transform: translate(0, 0) scale(1); }
     }
 
     .orb-1 {
@@ -304,11 +365,19 @@
       align-items: center;
       gap: 12px;
       z-index: 100;
-      background: rgba(22, 27, 34, .85);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--nav-border);
       border-radius: 50px;
-      padding: 8px 20px;
+      padding: 10px 24px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    #nav:hover {
+      padding: 10px 28px;
+      border-color: var(--accent);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .35), var(--shadow-glow);
     }
 
     .nav-btn {
@@ -317,31 +386,50 @@
       color: var(--text-dim);
       cursor: pointer;
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background .2s, color .2s;
+      transition: all .3s cubic-bezier(0.34, 1.56, 0.64, 1);
       font-size: 20px;
+      position: relative;
     }
 
     .nav-btn:hover {
       background: var(--surface2);
       color: var(--accent);
+      transform: scale(1.12) translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 212, 255, .2);
+    }
+    
+    .nav-btn:active {
+      transform: scale(0.95);
     }
 
     .nav-btn:disabled {
       opacity: .3;
       cursor: default;
+      color: var(--text-disabled);
+    }
+    
+    .nav-btn:disabled:hover {
+      background: none;
+      transform: none;
+      box-shadow: none;
     }
 
     #slide-counter {
       font-size: 13px;
       color: var(--text-dim);
       font-variant-numeric: tabular-nums;
-      min-width: 52px;
+      min-width: 60px;
       text-align: center;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     #dot-nav {
@@ -410,33 +498,33 @@
     }
 
     .tag-blue {
-      background: rgba(88, 166, 255, .15);
+      background: rgba(0, 212, 255, .15);
       color: var(--accent);
-      border: 1px solid rgba(88, 166, 255, .3);
+      border: 1px solid rgba(0, 212, 255, .35);
     }
 
     .tag-green {
-      background: rgba(63, 185, 80, .15);
+      background: rgba(0, 255, 136, .15);
       color: var(--accent2);
-      border: 1px solid rgba(63, 185, 80, .3);
+      border: 1px solid rgba(0, 255, 136, .35);
     }
 
     .tag-purple {
-      background: rgba(210, 168, 255, .15);
+      background: rgba(167, 125, 255, .15);
       color: var(--accent3);
-      border: 1px solid rgba(210, 168, 255, .3);
+      border: 1px solid rgba(167, 125, 255, .35);
     }
 
     .tag-orange {
-      background: rgba(255, 166, 87, .15);
+      background: rgba(255, 184, 77, .15);
       color: var(--accent4);
-      border: 1px solid rgba(255, 166, 87, .3);
+      border: 1px solid rgba(255, 184, 77, .35);
     }
 
     .tag-red {
-      background: rgba(255, 123, 114, .15);
+      background: rgba(255, 71, 87, .15);
       color: var(--accent5);
-      border: 1px solid rgba(255, 123, 114, .3);
+      border: 1px solid rgba(255, 71, 87, .35);
     }
 
     h1 {
@@ -544,10 +632,13 @@
       border-radius: var(--radius-lg);
       padding: var(--card-pad);
       box-shadow: var(--shadow-soft);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-
-    .card-accent-top {
-      border-top: 3px solid var(--accent);
+    
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(0, 212, 255, .15), var(--shadow-soft);
+      transform: translateY(-2px);
     }
 
     .card-accent-blue {
@@ -584,27 +675,27 @@
     }
 
     .ic-blue {
-      background: rgba(88, 166, 255, .15);
+      background: rgba(0, 212, 255, .12);
       color: var(--accent);
     }
 
     .ic-green {
-      background: rgba(63, 185, 80, .15);
+      background: rgba(0, 255, 136, .12);
       color: var(--accent2);
     }
 
     .ic-purple {
-      background: rgba(210, 168, 255, .15);
+      background: rgba(167, 125, 255, .12);
       color: var(--accent3);
     }
 
     .ic-orange {
-      background: rgba(255, 166, 87, .15);
+      background: rgba(255, 184, 77, .12);
       color: var(--accent4);
     }
 
     .ic-red {
-      background: rgba(255, 123, 114, .15);
+      background: rgba(255, 71, 87, .12);
       color: var(--accent5);
     }
 
@@ -1033,6 +1124,39 @@
       color: var(--text-dim);
     }
 
+    /* ─── Theme Toggle ─────────────────────────────────────── */
+
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 92px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1.5px solid var(--border-light);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 22px;
+      color: var(--accent);
+      box-shadow: var(--shadow-glow);
+    }
+
+    #theme-toggle:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+      transform: rotate(20deg) scale(1.1);
+      box-shadow: 0 8px 24px rgba(0, 212, 255, .35);
+    }
+
+    #theme-toggle:active {
+      transform: rotate(20deg) scale(0.92);
+    }
+
     /* ─── Fullscreen ───────────────────────────────────────── */
     #fs-btn {
       cursor: pointer;
@@ -1077,13 +1201,10 @@
     .slide .jf-item,
     .slide .board-card,
     .slide .tc-box,
-    .slide .dod-item {
-      transition: border-color .2s ease, background .2s ease;
-    }
-
-    .slide .card p,
-    .slide .jf-item,
-    .slide .board-card,
+      .slide .dod-item,
+      #nav,
+      #theme-toggle {
+        transition: border-color .2s ease, background .2s ease, color .2s ease;
     .slide .lc-label,
     .slide .mv-over,
     .slide .pill {
@@ -1199,6 +1320,14 @@
         display: none;
       }
 
+      #theme-toggle {
+        top: 64px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+
       h1 {
         line-height: 1.2;
       }
@@ -1304,6 +1433,25 @@
       }
     }
 
+    /* Light mode optimizations */
+    /* Light mode gradient adjustments */
+    html.light-mode .orb-1 {
+      background: radial-gradient(circle, rgba(0, 136, 221, .18) 0%, rgba(0, 136, 221, 0) 68%);
+    }
+
+    html.light-mode .orb-2 {
+      background: radial-gradient(circle, rgba(124, 58, 237, .15) 0%, rgba(124, 58, 237, 0) 68%);
+    }
+
+    html.light-mode .orb-3 {
+      background: radial-gradient(circle, rgba(0, 168, 85, .14) 0%, rgba(0, 168, 85, 0) 70%);
+    }
+
+    html.light-mode .spark {
+      background: rgba(15, 23, 42, .28);
+      box-shadow: 0 0 10px rgba(15, 23, 42, .12);
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       .orb,
@@ -1353,6 +1501,11 @@
     <span style="margin-left:6px" class="key">F</span>
     <span style="color:var(--text-muted)">fullscreen</span>
   </div>
+  
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light theme">
+    <span class="material-icons">brightness_4</span>
+  </button>
 
   <!-- ══════════════════════════════════════════════════════════ -->
   <!-- SLIDE 1 — Title                                           -->
@@ -2380,6 +2533,34 @@
     fsBtn.addEventListener('click', toggleFullscreen);
     document.addEventListener('fullscreenchange', () => {
       fsIcon.textContent = document.fullscreenElement ? 'fullscreen_exit' : 'fullscreen';
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Read saved theme preference or default to dark
+    const savedTheme = localStorage.getItem('theme-preference') || 'dark';
+    if (savedTheme === 'light') {
+      html.classList.add('light-mode');
+      updateThemeIcon();
+    }
+    
+    function updateThemeIcon() {
+      const isDark = !html.classList.contains('light-mode');
+      themeToggle.querySelector('.material-icons').textContent = isDark ? 'light_mode' : 'brightness_4';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const isDark = !html.classList.contains('light-mode');
+      if (isDark) {
+        html.classList.add('light-mode');
+        localStorage.setItem('theme-preference', 'light');
+      } else {
+        html.classList.remove('light-mode');
+        localStorage.setItem('theme-preference', 'dark');
+      }
+      updateThemeIcon();
     });
 
     // Init
